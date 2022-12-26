@@ -1,0 +1,36 @@
+type jobListing{
+  _id: ID!
+  title: String!
+  description: String!
+  company: String!
+  url: String!
+}
+
+type Query {
+  jobs: [jobListing!]!
+  job(id: ID!): jobListing!
+}
+
+type Mutation {
+  createJobListing(input: CreateJobListingInput!): jobListing!
+  updateJobListing(id: ID!, input: UpdateJobListingInput!): jobListing!
+  deleteJobListing(id: ID!): DeleteJobResponse!
+}
+
+input CreateJobListingInput{
+  title: String!
+  description: String!
+  company: String!
+  url: String!
+}
+ 
+input UpdateJobListingInput{
+  title: String
+  description: String
+  company: String
+  url: String
+}
+
+type DeleteJobResponse{
+  deleteJobId: String!
+}
